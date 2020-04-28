@@ -48,20 +48,19 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="Player collider" type="CollisionShape2D" parent="Player"]
-position = Vector2( -2.00037, 0.000457764 )
 rotation = -1.5708
 scale = Vector2( 0.894963, 0.330171 )
 shape = SubResource( 1 )
 one_way_collision = true
 
 [node name="hero" type="Sprite" parent="Player"]
-position = Vector2( -6.10352e-05, 0.00317383 )
 rotation = 1.5708
 texture = ExtResource( 2 )
 
 [node name="cursor" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.611765 )
 position = Vector2( -0.345795, 0.000168305 )
-scale = Vector2( 0.0999997, 0.0998891 )
+scale = Vector2( 0.03, 0.03 )
 texture = ExtResource( 3 )
 script = ExtResource( 4 )
 
