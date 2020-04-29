@@ -7,7 +7,7 @@ export var cdGoal = 0.1
 var cd = 0
 
 func _ready():
-	loadBullet = load("res://Bullet.tscn")
+	loadBullet = load("res://Prefabs/Bullet.tscn")
 
 func _process(delta):
 	cd += delta

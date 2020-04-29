@@ -9,7 +9,7 @@ func _ready():
 func setHealth(damage):
 	health -= damage
 
-func _process(delta):
+func _process(_delta):
 	if health <= 0:
 		hide()
 		$CollisionShape2D.set_deferred("disabled", true)

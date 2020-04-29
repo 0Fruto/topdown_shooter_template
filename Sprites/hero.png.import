@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Explosion.png-7696eaf18ca9bf9cdb04e48ee9ba5660.stex"
+path="res://.import/hero.png-5a7f1661e5d9ade9f7f733b9d164317b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Png/Explosion.png"
-dest_files=[ "res://.import/Explosion.png-7696eaf18ca9bf9cdb04e48ee9ba5660.stex" ]
+source_file="res://Sprites/hero.png"
+dest_files=[ "res://.import/hero.png-5a7f1661e5d9ade9f7f733b9d164317b.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

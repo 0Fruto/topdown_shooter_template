@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Bullet.png-04edda49c9e4a116302a40d51f254580.stex"
+path="res://.import/test map.png-3729bf198e209ae3346f3b87dbd6de8d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Png/Bullet.png"
-dest_files=[ "res://.import/Bullet.png-04edda49c9e4a116302a40d51f254580.stex" ]
+source_file="res://Sprites/test map.png"
+dest_files=[ "res://.import/test map.png-3729bf198e209ae3346f3b87dbd6de8d.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

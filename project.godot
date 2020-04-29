@@ -16,8 +16,8 @@ _global_script_class_icons={
 [application]
 
 config/name="furry octo waffle"
-run/main_scene="res://Main.tscn"
-config/icon="res://Png/hero.png"
+run/main_scene="res://Scenes/Main.tscn"
+config/icon="res://Sprites/hero.png"
 
 [display]
 

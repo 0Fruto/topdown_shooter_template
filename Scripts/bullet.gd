@@ -12,16 +12,16 @@ var destroy = false
 var counter = 1
 
 func _ready():
-	self.position = get_node("../../Player").position 
+	self.position = get_node("../Player").position 
 	mPos = get_global_mouse_position()
 	difference = mPos - self.position
 	rotationZ = atan2(difference.y, difference.x)
-	get_node("../../Player/Main camera").position += Vector2(cameraOffset, cameraOffset)
+	get_node("../Player/Main camera").position += Vector2(cameraOffset, cameraOffset)
 	self.rotate(rotationZ - self.rotation)
 
 func _process(delta):
 	if cameraOffset > 0:
-		get_node("../../Player/Main camera").position -= Vector2(1, 1)
+		get_node("../Player/Main camera").position -= Vector2(1, 1)
 		cameraOffset -= 1
 	if destroy:
 		counter -= delta
@@ -37,7 +37,7 @@ func _physics_process(_delta):
 
 		var body = self.move_and_collide(Vector2(speed * cos(rotation), speed * sin(rotation)))
 		if body:
-			if body != get_node("../../Player"):
+			if body != get_node("../Player"):
 				get_node("Particle").emitting = true
 				get_node("Bullet texture").hide()
 				if body.collider.name == "Enemy":

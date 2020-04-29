@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/test map.png-7e7d72c64b6437f19faffa4474a2fc8a.stex"
+path="res://.import/Explosion.png-4cec69c6d6c03527ba22cbc120bf0a6e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Png/test map.png"
-dest_files=[ "res://.import/test map.png-7e7d72c64b6437f19faffa4474a2fc8a.stex" ]
+source_file="res://Sprites/Explosion.png"
+dest_files=[ "res://.import/Explosion.png-4cec69c6d6c03527ba22cbc120bf0a6e.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
