@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 export (int) var speed = 400
-
 var mPos = Vector2()
 var velocity = Vector2()
 var difference = Vector3()
@@ -24,6 +23,7 @@ func _physics_process(_delta):
 	velocity = move_and_slide(velocity)
 
 func _process(_delta):
+	
 	mPos = get_global_mouse_position()
 	difference = mPos - self.position
 	rotationZ = atan2(difference.y, difference.x)

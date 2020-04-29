@@ -1,0 +1,84 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Pause.gd" type="Script" id=1]
+
+[node name="Pause" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Popup" type="Popup" parent="Main"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Resume" type="Button" parent="Main/Popup"]
+margin_left = 125.0
+margin_top = 40.0
+margin_right = 201.0
+margin_bottom = 60.0
+text = "Resume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" type="Button" parent="Main/Popup"]
+margin_left = 124.0
+margin_top = 67.0
+margin_right = 201.0
+margin_bottom = 87.0
+text = "Settings"
+
+[node name="Exit" type="Button" parent="Main/Popup"]
+margin_left = 123.803
+margin_top = 95.4877
+margin_right = 200.803
+margin_bottom = 115.488
+text = "Exit"
+
+[node name="Settings" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Popup" type="Popup" parent="Settings"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Sound" type="HSlider" parent="Settings/Popup"]
+margin_left = 118.505
+margin_top = 96.5596
+margin_right = 203.505
+margin_bottom = 112.56
+
+[node name="Back" type="Button" parent="Settings/Popup"]
+margin_left = 119.0
+margin_top = 118.0
+margin_right = 201.0
+margin_bottom = 138.0
+text = "Back"
+
+[node name="Label" type="Label" parent="Settings/Popup"]
+margin_left = 141.945
+margin_top = 75.4384
+margin_right = 180.945
+margin_bottom = 89.4384
+text = "Sound"
+[connection signal="tree_exiting" from="." to="." method="_on_Pause_tree_exiting"]
+[connection signal="pressed" from="Main/Popup/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="Main/Popup/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="Main/Popup/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="value_changed" from="Settings/Popup/Sound" to="." method="_on_Sound_value_changed"]
+[connection signal="pressed" from="Settings/Popup/Back" to="." method="_on_Back_pressed"]
