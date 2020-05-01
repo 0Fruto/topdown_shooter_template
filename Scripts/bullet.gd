@@ -5,7 +5,8 @@ var velocity = Vector2()
 var difference = Vector3()
 var rotationZ = float()
 export var speed = 50
-var cameraOffset = 5
+var cameraOffsetX = rand_range(2, 5)
+var cameraOffsetY = rand_range(2, 5)
 export var damage = 101
 var move = true
 var destroy = false
@@ -16,13 +17,25 @@ func _ready():
 	mPos = get_global_mouse_position()
 	difference = mPos - self.position
 	rotationZ = atan2(difference.y, difference.x)
-	get_node("../Player/Main camera").position += Vector2(cameraOffset, cameraOffset)
+	get_node("../Player/Main camera").position += Vector2(cameraOffsetX, cameraOffsetY)
 	self.rotate(rotationZ - self.rotation)
 
 func _process(delta):
-	if cameraOffset > 0:
-		get_node("../Player/Main camera").position -= Vector2(1, 1)
-		cameraOffset -= 1
+	if cameraOffsetX > 0:
+		get_node("../Player/Main camera").position -= Vector2(1, 0)
+		cameraOffsetX -= 1
+	if cameraOffsetX < 0:
+		get_node("../Player/Main camera").position += Vector2(1, 0)
+		cameraOffsetX += 1
+	
+	if cameraOffsetY > 0:
+		get_node("../Player/Main camera").position -= Vector2(0, 1)
+		cameraOffsetY -= 1
+	if cameraOffsetY < 0:
+		get_node("../Player/Main camera").position += Vector2(0, 1)
+		cameraOffsetY += 1
+	
+	
 	if destroy:
 		counter -= delta
 	if counter <= 0:

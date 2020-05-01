@@ -1,6 +1,8 @@
-extends Sprite
+extends AnimatedSprite
 
 var cursorPos
+var rotZ
+var playerRot
 
 func _ready():
 	pass
@@ -8,4 +10,10 @@ func _ready():
 func _process(_delta):
 	cursorPos = get_global_mouse_position()
 	self.position = cursorPos
-	self.rotate(0.05)
+	rotZ = get_node("../Player").rotationZ
+	self.rotate(rotZ - self.rotation)
+	
+	if Input.is_action_pressed("ui_select"):
+		play("Shooting")
+	else: 
+		play("Idle")
