@@ -12,8 +12,3 @@ func _process(_delta):
 	self.position = cursorPos
 	rotZ = get_node("../Player").rotationZ
 	self.rotate(rotZ - self.rotation)
-	
-	if Input.is_action_pressed("ui_select"):
-		play("Shooting")
-	else: 
-		play("Idle")

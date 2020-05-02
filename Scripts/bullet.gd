@@ -13,12 +13,12 @@ var destroy = false
 var counter = 1
 
 func _ready():
-	self.position = get_node("../Player").position 
+	self.position = get_node("../Player/Character/Gun").global_position
 	mPos = get_global_mouse_position()
 	difference = mPos - self.position
 	rotationZ = atan2(difference.y, difference.x)
-	get_node("../Player/Main camera").position += Vector2(cameraOffsetX, cameraOffsetY)
 	self.rotate(rotationZ - self.rotation)
+	get_node("../Player/Main camera").position += Vector2(cameraOffsetX, cameraOffsetY)
 
 func _process(delta):
 	if cameraOffsetX > 0:
