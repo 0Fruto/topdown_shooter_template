@@ -14,7 +14,12 @@ func _process(delta):
 #	if Input.is_action_just_pressed("ui_cancel"):     does not working
 #		var inst = pause.instance()     does not working
 #		add_child(inst)     does not working
-	if Input.is_action_pressed("ui_select") && cd >= cdGoal:
-		bullet = loadBullet.instance()
-		add_child(bullet)
-		cd = 0
+	if Input.is_action_pressed("ui_select"):
+		$Player/Character.play("Shooting")
+		if cd >= cdGoal:
+			bullet = loadBullet.instance()
+			add_child(bullet)
+			cd = 0
+	else:
+		$Player/Character.play("Idle")
+		
