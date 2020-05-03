@@ -7,8 +7,8 @@
 [ext_resource path="res://Prefabs/Trail.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.557143 )
-colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.678431 )
+offsets = PoolRealArray( 0, 0.596026 )
+colors = PoolColorArray( 1, 0.445312, 0, 0, 1, 0.46875, 0, 0.678431 )
 
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0.0120968, 0.58871, 0.987903, 1 )
@@ -54,7 +54,7 @@ width = 1.0
 default_color = Color( 1, 1, 1, 1 )
 gradient = SubResource( 1 )
 targetPath = NodePath("..")
-trailLength = 3
+trailLength = 5
 
 [node name="Particle" type="Particles2D" parent="."]
 position = Vector2( 1.63335, 0.00546074 )
@@ -76,7 +76,9 @@ pitch_scale = 1.81
 autoplay = true
 
 [node name="Bullet texture" type="Sprite" parent="."]
+position = Vector2( 0.976542, 0.00240231 )
 texture = ExtResource( 1 )
+offset = Vector2( -0.976542, -0.00240231 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 7 )

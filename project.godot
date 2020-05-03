@@ -17,7 +17,12 @@ _global_script_class_icons={
 
 config/name="furry octo waffle"
 run/main_scene="res://Scenes/Main.tscn"
-config/icon="res://Sprites/hero.png"
+boot_splash/image="res://Sprites/Player/Gun/pixil-frame-1.png"
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 1, 0.890196, 0.890196, 1 )
+config/icon="res://Sprites/Cursor/Idle/pixil-frame-2.png"
+config/macos_native_icon="res://Sprites/Cursor/Idle/pixil-frame-2.png"
+config/windows_native_icon="res://Sprites/Cursor/Idle/pixil-frame-2.png"
 
 [display]
 

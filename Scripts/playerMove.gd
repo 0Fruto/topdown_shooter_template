@@ -5,6 +5,8 @@ var mPos = Vector2()
 var velocity = Vector2()
 var difference = Vector3()
 var rotationZ = float()
+var fullMagazine = 6
+var magazineCount = 4
 
 func get_input():
 	velocity = Vector2()
@@ -23,8 +25,8 @@ func _physics_process(_delta):
 	velocity = move_and_slide(velocity)
 
 func _process(_delta):
-	
 	mPos = get_global_mouse_position()
 	difference = mPos - self.position
 	rotationZ = atan2(difference.y, difference.x)
 	self.rotate(rotationZ - self.rotation)
+	$"Main camera".rotation = -self.global_rotation
