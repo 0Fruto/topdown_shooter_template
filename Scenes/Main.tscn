@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Sprites/Player/Idle/pixil-frame-0.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Cursor/Idle/pixil-frame-3.png" type="Texture" id=2]
@@ -19,13 +19,20 @@
 [ext_resource path="res://Sprites/Player/Gun/pixil-frame-0.png" type="Texture" id=17]
 [ext_resource path="res://Sprites/Player/Gun/pixil-frame-1.png" type="Texture" id=18]
 [ext_resource path="res://Prefabs/Trail.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Fonts/Press start/PressStart2P-vaV7.ttf" type="DynamicFontData" id=20]
+[ext_resource path="res://Sprites/Player/Reload/pixil-frame-1.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Player/Reload/pixil-frame-0.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/Player/Gun/Gun reload.png" type="Texture" id=23]
 
 [sub_resource type="Gradient" id=13]
 offsets = PoolRealArray( 0.00571429, 0.994286 )
 colors = PoolColorArray( 0, 0, 0, 0, 0, 0, 0, 0.113725 )
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7.48244, 3.00339 )
+[sub_resource type="ConvexPolygonShape2D" id=15]
+points = PoolVector2Array( -7.5, -2, -6.5, -2, -6.5, -3, 6.5, -3, 6.5, -2, 7.5, -2, 7.5, 1, 6.5, 1, 6.5, 2, -6.5, 2, -6.5, 1, -7.5, 1 )
+
+[sub_resource type="DynamicFont" id=14]
+font_data = ExtResource( 20 )
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
@@ -43,6 +50,11 @@ animations = [ {
 "loop": true,
 "name": "Prepare",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 22 ) ],
+"loop": false,
+"name": "Reloading",
+"speed": 1.0
 } ]
 
 [sub_resource type="SpriteFrames" id=8]
@@ -61,6 +73,11 @@ animations = [ {
 "loop": true,
 "name": "Prepare",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ) ],
+"loop": true,
+"name": "Reloading",
+"speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=6]
@@ -75,18 +92,6 @@ animations = [ {
 "name": "Idle",
 "speed": 6.0
 } ]
-
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 34, 2 )
-
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 3, 18 )
-
-[sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 12, 2.99999 )
-
-[sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 3, 6 )
 
 [node name="Game" type="Node2D"]
 position = Vector2( -0.38858, -0.388596 )
@@ -116,16 +121,22 @@ z_index = 1
 script = ExtResource( 6 )
 speed = 150
 
+[node name="Player Shoot col" type="CollisionPolygon2D" parent="Player"]
+position = Vector2( -0.997819, -0.561378 )
+scale = Vector2( 13.0637, 1 )
+polygon = PoolVector2Array( 0.152779, -3.4391, 0.229399, -1.43958, 0.305986, -0.440071, 0.306097, 2.55993, 0.306171, 4.55993, 0.382719, 4.55945, 0.382755, 5.55945, 0.995141, 5.55558, 0.995215, 7.55558, 0.765571, 7.55703, 0.765607, 8.55703, 0.153221, 8.5609, -0.0765343, 5.56235, -0.153156, 3.56283, -0.229927, -2.43668, -0.230001, -4.43668, -0.153488, -5.43717, -0.000392914, -5.43813 )
+
 [node name="Trail" parent="Player" instance=ExtResource( 19 )]
 width = 5.0
 gradient = SubResource( 13 )
 targetPath = NodePath("..")
 trailLength = 10
 
-[node name="Player collider" type="CollisionShape2D" parent="Player"]
+[node name="Player Idle col" type="CollisionShape2D" parent="Player"]
 position = Vector2( 0.000198364, 0.49942 )
 rotation = -1.5708
-shape = SubResource( 1 )
+z_index = 10
+shape = SubResource( 15 )
 one_way_collision = true
 
 [node name="Main camera" type="Camera2D" parent="Player"]
@@ -133,30 +144,32 @@ rotation = 1.5708
 current = true
 zoom = Vector2( 0.7, 0.7 )
 
-[node name="Label" type="Label" parent="Player/Main camera"]
-margin_left = -108.978
-margin_top = 46.0527
-margin_right = -66.9778
-margin_bottom = 60.0527
+[node name="Bullets" type="Label" parent="Player/Main camera"]
+margin_left = -108.975
+margin_top = 51.0527
+margin_right = -12.5394
+margin_bottom = 67.0527
+rect_scale = Vector2( 0.6, 0.6 )
 size_flags_stretch_ratio = 0.0
-text = "Hello1"
+custom_fonts/font = SubResource( 14 )
+text = "bullets"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Character" type="AnimatedSprite" parent="Player"]
-position = Vector2( -3.05176e-05, 0 )
+position = Vector2( -6.10352e-05, 0 )
 rotation = 1.5708
 z_index = 1
 frames = SubResource( 7 )
-animation = "Idle"
+animation = "Prepare"
 playing = true
 
 [node name="Gun" type="AnimatedSprite" parent="Player/Character"]
 position = Vector2( 4, -17 )
 z_index = -1
 frames = SubResource( 8 )
-animation = "Prepare"
+animation = "Idle"
 playing = true
 offset = Vector2( 1, 3 )
 
@@ -166,7 +179,6 @@ position = Vector2( 0.0853584, -4.01916 )
 z_index = 22
 frames = SubResource( 6 )
 animation = "Idle"
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -15.59, -11.488 )
@@ -180,163 +192,6 @@ texture = ExtResource( 3 )
 [node name="StaticBody2D" type="StaticBody2D" parent="Test LVL extended"]
 z_index = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( -40.0039, -7.98053 )
-z_index = 2
-shape = SubResource( 9 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 24.0019, 3.98832 )
-shape = SubResource( 10 )
-
-[node name="CollisionShape2D24" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( -76.001, -1.96301 )
-shape = SubResource( 10 )
-
-[node name="CollisionShape2D29" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( -75.9635, 75.037 )
-shape = SubResource( 10 )
-
-[node name="CollisionShape2D34" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 24.037, 75.9883 )
-shape = SubResource( 10 )
-
-[node name="CollisionShape2D35" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 73.018, 36.9645 )
-shape = SubResource( 10 )
-
-[node name="CollisionShape2D26" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( -100.984, 33.0492 )
-shape = SubResource( 10 )
-
-[node name="CollisionShape2D27" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( -100.981, 40.0492 )
-shape = SubResource( 10 )
-
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 97.9922, -16.0477 )
-shape = SubResource( 10 )
-
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 97.9747, -52.0477 )
-shape = SubResource( 10 )
-
-[node name="CollisionShape2D13" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 25.9572, -88.0126 )
-shape = SubResource( 10 )
-
-[node name="CollisionShape2D20" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( -96.0448, -91.9533 )
-shape = SubResource( 10 )
-
-[node name="CollisionShape2D21" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( -96.0277, -56.9533 )
-shape = SubResource( 10 )
-
-[node name="CollisionShape2D22" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( -96.0185, -37.9533 )
-shape = SubResource( 10 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 33.9942, -12.0166 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D36" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 39.0093, 18.981 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D37" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 63.0092, 18.9693 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D38" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 33.0268, 54.9839 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D39" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 57.0268, 54.9722 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D40" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 64.0268, 54.9688 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D23" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( -85.0112, -22.9586 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D25" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( -84.9912, 18.0414 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D28" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( -85.9732, 55.0419 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D30" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( -62.9557, 91.0306 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D31" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( -45.9557, 91.0224 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D32" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( -34.9557, 91.017 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D33" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 10.0443, 90.9951 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 88.9644, -73.0433 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 64.9645, -73.0316 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 40.9645, -73.0199 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D14" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 16.9479, -107.008 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D15" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( -7.05208, -106.997 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D16" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( -31.0521, -106.985 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D17" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( -55.0521, -106.973 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D18" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( -79.0521, -106.962 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D19" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( -86.0521, -106.958 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 57.9995, -1.02823 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 80.9995, -1.03943 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 87.9995, -1.04282 )
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Test LVL extended/StaticBody2D"]
-position = Vector2( 42.998, -4.02093 )
-shape = SubResource( 12 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Test LVL extended/StaticBody2D"]
+position = Vector2( -6.00292, -5.99707 )
+polygon = PoolVector2Array( -1.00048, -0.999527, -1.00146, -2.99953, -68.0014, -2.96691, -68.0092, -18.9669, -88.0092, -18.9572, -88.0482, -98.9572, 29.9518, -99.0146, 29.9684, -65.0146, 101.968, -65.0496, 102.001, 2.95035, 51.0015, 2.97517, 50.9961, -8.02483, 27.9961, -8.01364, 28.0131, 26.9864, 77.0131, 26.9625, 77.0287, 58.9625, 28.0287, 58.9864, 28.0462, 94.9864, 5.04624, 94.9975, 5.04819, 98.9975, 32.0482, 98.9844, 32.0307, 62.9844, 81.0307, 62.9606, 81.0112, 22.9606, 32.0112, 22.9844, 31.9981, -4.01559, 46.9981, -4.02289, 47.0039, 7.97711, 105.004, 7.94888, 104.967, -68.0511, 32.9669, -68.0161, 32.9508, -101.016, -90.0491, -100.956, -90.0078, -15.9562, -70.0078, -15.9659, -69.9883, 24.0341, -94.9883, 24.0462, -94.9698, 62.0462, -69.9698, 62.0341, -69.9518, 99.034, -17.9518, 99.0087, -17.9538, 95.0087, -67.9538, 95.0331, -67.9708, 60.0331, -92.9708, 60.0452, -92.9873, 26.0452, -67.9873, 26.0331, -68.0005, -0.966911 )
