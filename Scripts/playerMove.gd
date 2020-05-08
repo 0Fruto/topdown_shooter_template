@@ -8,7 +8,15 @@ var rotationZ = float()
 var fullMagazine = 6
 var magazineCount = 4
 
+
+func _ready():
+	$"Background music".playing = true
+
 func get_input():
+	if Input.is_action_pressed("reloding"):
+		get_node("../../Game").ReloadWeapon()
+	
+	
 	velocity = Vector2()
 	if Input.is_action_pressed('ui_right'):
 		velocity.x += 1
@@ -25,6 +33,8 @@ func _physics_process(_delta):
 	velocity = move_and_slide(velocity)
 
 func _process(_delta):
+	if $"Background music".playing == false:
+		$"Background music".playing = true
 	mPos = get_global_mouse_position()
 	difference = mPos - self.position
 	rotationZ = atan2(difference.y, difference.x)

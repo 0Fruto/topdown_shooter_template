@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Что гуглят голосом - Путин (www.hotplayer.ru).wav-619b62facfcc7e8f7f267fbe1711656c.sample"
+
+[deps]
+
+source_file="res://Sounds/Putin/Что гуглят голосом - Путин (www.hotplayer.ru).wav"
+dest_files=[ "res://.import/Что гуглят голосом - Путин (www.hotplayer.ru).wav-619b62facfcc7e8f7f267fbe1711656c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

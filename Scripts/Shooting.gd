@@ -16,8 +16,9 @@ func _ready():
 	bullets = $Player.fullMagazine
 
 func ReloadWeapon():
-	if $Player.magazineCount >= 1:
+	if $Player.magazineCount >= 1 and bullets < $Player.fullMagazine:
 		reloading = true
+		$Player/Character/Gun.show()
 		$Player/Character/Gun.play("Reloading")
 		$Player/Character.play("Reloading")
 

@@ -46,7 +46,7 @@ extents = Vector2( 1.00727, 0.511095 )
 [node name="Bullet" type="KinematicBody2D"]
 script = ExtResource( 2 )
 speed = 30
-damage = 10
+damage = 100
 
 [node name="Trail" parent="." instance=ExtResource( 5 )]
 position = Vector2( -0.0200367, 0 )
