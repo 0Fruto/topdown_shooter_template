@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Sprites/Enemy 1/Idle/pixil-frame-0.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=2]
@@ -14,6 +14,11 @@
 [ext_resource path="res://Sounds/Putin/Что гуглят голосом - Путин (www.hotplayer.ru).wav" type="AudioStream" id=12]
 [ext_resource path="res://Sounds/Putin/Краснов - политические скороговорки. Путин и Медведев (www.hotplayer.ru).wav" type="AudioStream" id=13]
 [ext_resource path="res://Sounds/Putin/Скороговорка про путина.wav" type="AudioStream" id=14]
+[ext_resource path="res://Sprites/Enemy 1/Shoot/pixil-frame-0.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Enemy 1/Shoot/pixil-frame-1.png" type="Texture" id=16]
+[ext_resource path="res://Scripts/EnemyShoot.gd" type="Script" id=17]
+[ext_resource path="res://Sprites/Player/Gun/pixil-frame-0.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Player/Gun/pixil-frame-1.png" type="Texture" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.51551, 2.70146 )
@@ -29,21 +34,53 @@ animations = [ {
 "loop": false,
 "name": "Death",
 "speed": 2.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 15 ) ],
+"loop": false,
+"name": "Shooting",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "Ready",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 18 ) ],
+"loop": false,
+"name": "Shooting",
+"speed": 5.0
 } ]
 
 [node name="Enemy" type="Node2D"]
+script = ExtResource( 17 )
 
 [node name="Enemy" type="KinematicBody2D" parent="."]
 position = Vector2( -0.282471, 0.0244064 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-position = Vector2( 0.270676, 0 )
+position = Vector2( -0.203, 0.434 )
+rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="EnemyAnimator" type="AnimatedSprite" parent="Enemy"]
-position = Vector2( -0.200607, -0.327178 )
+position = Vector2( 0.15, 0 )
+rotation = 1.5708
 frames = SubResource( 2 )
+animation = "Idle"
+playing = true
+
+[node name="Gun" type="AnimatedSprite" parent="Enemy/EnemyAnimator"]
+position = Vector2( 3.97559, -14.1325 )
+frames = SubResource( 3 )
 animation = "Idle"
 playing = true
 

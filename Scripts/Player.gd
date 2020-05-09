@@ -7,7 +7,8 @@ var difference = Vector3()
 var rotationZ = float()
 var fullMagazine = 6
 var magazineCount = 4
-
+export var health = 100
+var alive = true
 
 func _ready():
 	$"Background music".playing = true
@@ -29,14 +30,29 @@ func get_input():
 	velocity = velocity.normalized() * speed
 
 func _physics_process(_delta):
-	get_input()
-	velocity = move_and_slide(velocity)
+	if alive:
+		get_input()
+		velocity = move_and_slide(velocity)
+
+func setHealth(damage):
+	if health > 0:
+		health -= damage
+
+func kill():
+	$"Player Idle col".disabled = true
+	$"Player Shoot col".disabled = true
+	$Character.hide()
+	$Character/Gun.hide()
+	alive = false
 
 func _process(_delta):
+	if health <= 0:
+		kill()
 	if $"Background music".playing == false:
 		$"Background music".playing = true
-	mPos = get_global_mouse_position()
-	difference = mPos - self.position
-	rotationZ = atan2(difference.y, difference.x)
-	self.rotate(rotationZ - self.rotation)
-	$"Main camera".rotation = -self.global_rotation
+	if alive:
+		mPos = get_global_mouse_position()
+		difference = mPos - self.position
+		rotationZ = atan2(difference.y, difference.x)
+		self.rotate(rotationZ - self.rotation)
+		$"Main camera".rotation = -self.global_rotation

@@ -45,16 +45,13 @@ func _process(delta):
 	
 func _physics_process(_delta):
 	if !destroy:
-		mPos = get_global_mouse_position()
-		difference = mPos - self.position
-		rotationZ = atan2(difference.y, difference.x)
-
 		var body = self.move_and_collide(Vector2(speed * cos(rotation), speed * sin(rotation)))
 		if body:
-			if body != get_node("../Player"):
-				get_node("Particle").emitting = true
-				get_node("Bullet texture").hide()
-				if body.collider.name == "Enemy":
-					body.collider.setHealth(damage)
+			if body != $"/root/Game/Player":
+				$"Particle".emitting = true
+				$"Bullet texture".hide()
+				if body.collider.name != "Wall":
+					if body.collider.health > 0:
+						body.collider.setHealth(damage)
 				destroy = true
 				$CollisionShape2D.disabled = true

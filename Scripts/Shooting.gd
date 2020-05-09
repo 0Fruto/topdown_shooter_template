@@ -9,6 +9,12 @@ var reloading = false
 export var reloadingDuration = 100
 var reloadingCounter = reloadingDuration
 
+func IsEnemy(goal):
+	for i in $Enemyies.get_child_count():
+		if goal == get_node("Enemyies/Enemy" + str(i)):
+			return true
+		
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	loadBullet = load("res://Prefabs/Bullet.tscn")
@@ -32,7 +38,7 @@ func Shooting():
 	add_child(bullet)
 	cd = 0
 	bullets -= 1
-	
+
 func Prepare():
 	$Player/Character/Gun.show()
 	$Player/Character.play("Prepare")

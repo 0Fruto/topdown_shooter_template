@@ -5,7 +5,7 @@
 [ext_resource path="res://Sprites/Test LVL extended.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/cursor.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Shooting.gd" type="Script" id=5]
-[ext_resource path="res://Scripts/playerMove.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=6]
 [ext_resource path="res://Prefabs/Enemy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Sprites/Cursor/Idle/pixil-frame-0.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/Cursor/Idle/pixil-frame-1.png" type="Texture" id=9]
@@ -101,33 +101,17 @@ script = ExtResource( 5 )
 
 [node name="Enemyies" type="Node2D" parent="."]
 
-[node name="Enemy5" parent="Enemyies" instance=ExtResource( 7 )]
-position = Vector2( 39.3975, 18.3694 )
-rotation = 1.91288
+[node name="Enemy0" parent="Enemyies" instance=ExtResource( 7 )]
+position = Vector2( 31.4214, 67.3733 )
+rotation = -0.698132
 
-[node name="Enemy6" parent="Enemyies" instance=ExtResource( 7 )]
-position = Vector2( 29.4097, 43.3743 )
-rotation = 1.91288
-
-[node name="Enemy7" parent="Enemyies" instance=ExtResource( 7 )]
-position = Vector2( 29.4224, 69.3743 )
-rotation = 1.91288
-
-[node name="Enemy" parent="Enemyies" instance=ExtResource( 7 )]
-position = Vector2( 175.911, 150.407 )
-rotation = -1.57079
+[node name="Enemy1" parent="Enemyies" instance=ExtResource( 7 )]
+position = Vector2( 175.462, 150.303 )
+rotation = 2.91994
 
 [node name="Enemy2" parent="Enemyies" instance=ExtResource( 7 )]
 position = Vector2( 188.706, 98.6784 )
-rotation = -0.932529
-
-[node name="Enemy3" parent="Enemyies" instance=ExtResource( 7 )]
-position = Vector2( 196.433, 78.3389 )
-rotation = -1.53559
-
-[node name="Enemy4" parent="Enemyies" instance=ExtResource( 7 )]
-position = Vector2( 190.668, 55.0299 )
-rotation = -2.17992
+rotation = -2.41205
 
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 98.4939, 216.341 )
@@ -138,7 +122,7 @@ speed = 150
 
 [node name="Background music" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource( 24 )
-volume_db = -12.676
+volume_db = -80.0
 pitch_scale = 0.27
 autoplay = true
 
@@ -158,7 +142,6 @@ position = Vector2( 0.000198364, 0.49942 )
 rotation = -1.5708
 z_index = 10
 shape = SubResource( 2 )
-one_way_collision = true
 
 [node name="Main camera" type="Camera2D" parent="Player"]
 rotation = 1.5708
@@ -200,7 +183,6 @@ position = Vector2( 0.0853584, -4.01916 )
 z_index = 22
 frames = SubResource( 6 )
 animation = "Idle"
-frame = 1
 playing = true
 centered = false
 offset = Vector2( -15.59, -11.488 )
@@ -211,9 +193,9 @@ position = Vector2( 113.443, 112.333 )
 z_index = -10
 texture = ExtResource( 3 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Test LVL extended"]
+[node name="Wall" type="StaticBody2D" parent="Test LVL extended"]
 z_index = 1
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Test LVL extended/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Test LVL extended/Wall"]
 position = Vector2( -6.00292, -5.99708 )
 polygon = PoolVector2Array( -1.00048, -0.999527, -1.00146, -2.99953, -68.0014, -2.96691, -68.0092, -18.9669, -88.0092, -18.9572, -88.0482, -98.9572, 29.9518, -99.0146, 29.9684, -65.0146, 101.968, -65.0496, 102.001, 2.95035, 51.0015, 2.97517, 50.9961, -8.02483, 27.9961, -8.01364, 28.0131, 26.9864, 77.0131, 26.9625, 77.0287, 58.9625, 28.0287, 58.9864, 28.0462, 94.9864, 5.04624, 94.9975, 5.04819, 98.9975, 32.0482, 98.9844, 32.0307, 62.9844, 81.0307, 62.9606, 81.0107, 21.9606, 32.0107, 21.9844, 31.9981, -4.01559, 46.9981, -4.02289, 47.0039, 7.97711, 106.004, 7.94841, 105.966, -69.0516, 33.9664, -69.0165, 33.9499, -103.017, -92.0501, -102.955, -92.0068, -13.9552, -72.0068, -13.965, -71.9888, 23.035, -95.9888, 23.0467, -95.9693, 63.0467, -71.9693, 63.035, -71.9518, 99.035, -17.9518, 99.0087, -17.9538, 95.0087, -67.9538, 95.0331, -67.9708, 60.0331, -92.9708, 60.0452, -92.9873, 26.0452, -67.9873, 26.0331, -68.0005, -0.966911 )

@@ -1,14 +1,14 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Sprites/Bullet.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/bullet.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/EnemyBullet.gd" type="Script" id=2]
 [ext_resource path="res://Sounds/Shoot.wav" type="AudioStream" id=3]
 [ext_resource path="res://Sprites/Explosion.png" type="Texture" id=4]
 [ext_resource path="res://Prefabs/Trail.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.596026 )
-colors = PoolColorArray( 1, 0.445312, 0, 0, 1, 0.46875, 0, 0.678431 )
+offsets = PoolRealArray( 0, 0.592715 )
+colors = PoolColorArray( 1, 0, 0, 0, 1, 0, 0, 0.678431 )
 
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0.0120968, 0.58871, 0.987903, 1 )
@@ -43,11 +43,10 @@ color_ramp = SubResource( 3 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 1.00727, 0.511095 )
 
-[node name="Bullet" type="KinematicBody2D"]
+[node name="EnemyBullet" type="KinematicBody2D"]
 position = Vector2( 0, 0.0100179 )
 script = ExtResource( 2 )
-speed = 30
-damage = 100
+speed = 20
 
 [node name="Trail" parent="." instance=ExtResource( 5 )]
 position = Vector2( -0.0200367, 0 )
@@ -55,7 +54,7 @@ width = 1.0
 default_color = Color( 1, 1, 1, 1 )
 gradient = SubResource( 1 )
 targetPath = NodePath("..")
-trailLength = 5
+trailLength = 10
 
 [node name="Particle" type="Particles2D" parent="."]
 position = Vector2( 1.63335, 0.00546074 )
@@ -77,6 +76,7 @@ pitch_scale = 1.81
 autoplay = true
 
 [node name="Bullet texture" type="Sprite" parent="."]
+modulate = Color( 0.737255, 0.0823529, 0.0823529, 1 )
 position = Vector2( 1.02663, 0.49329 )
 texture = ExtResource( 1 )
 offset = Vector2( -0.976542, -0.00240231 )
