@@ -49,6 +49,15 @@ func Prepare():
 	if bullets < 1:
 		ReloadWeapon()
 
+func RestartGame():
+	$Player.position = Vector2(98.494, 216.341)
+	$Player/Character.show()
+	$Player/Character/Gun.show()
+	bullets = $Player.fullMagazine
+	$Player.magazineCount = 4
+	$Player.alive
+	
+
 func RemoveWeapon():
 	$Cursor.play("Idle")
 	$Player/Character/Gun.hide()
@@ -57,22 +66,25 @@ func RemoveWeapon():
 	$"Player/Player Idle col".disabled = false
 
 func _process(delta):
-	$"Player/Main camera/Bullets".text = (str(bullets) + "/" + str($Player.magazineCount))
-	cd += delta
-	if Input.is_action_pressed("ui_select") and not reloading:
-		if cd >= cdGoal and bullets > 0:
-			Shooting()
+	if Input.action_press("ui_cancel"):
+		RestartGame()
+	
+	if $Player.alive:
+		$"Player/Main camera/Bullets".text = (str(bullets) + "/" + str($Player.magazineCount))
+		cd += delta
+		if Input.is_action_pressed("ui_select") and not reloading:
+			if cd >= cdGoal and bullets > 0:
+				Shooting()
+			else:
+				Prepare()
 		else:
-			Prepare()
-	else:
-		if not reloading:
-			RemoveWeapon()
+			if not reloading:
+				RemoveWeapon()
 	
-	
-	if reloading:
-		reloadingCounter -= 1
-		if reloadingCounter <= 0:
-			bullets = $Player.fullMagazine
-			$Player.magazineCount -= 1
-			reloading = false
-			reloadingCounter = reloadingDuration
+		if reloading:
+			reloadingCounter -= 1
+			if reloadingCounter <= 0:
+				bullets = $Player.fullMagazine
+				$Player.magazineCount -= 1
+				reloading = false
+				reloadingCounter = reloadingDuration

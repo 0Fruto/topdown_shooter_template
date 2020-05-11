@@ -15,7 +15,7 @@ func _ready():
 
 func get_input():
 	if Input.is_action_pressed("reloding"):
-		get_node("../../Game").ReloadWeapon()
+		get_node("/root/Game").ReloadWeapon()
 	
 	
 	velocity = Vector2()
@@ -45,14 +45,17 @@ func kill():
 	$Character/Gun.hide()
 	alive = false
 
+func RotateToCursor():
+	mPos = get_global_mouse_position()
+	difference = mPos - self.position
+	rotationZ = atan2(difference.y, difference.x)
+	self.rotate(rotationZ - self.rotation)
+	$"Main camera".rotation = -self.global_rotation
+
 func _process(_delta):
 	if health <= 0:
 		kill()
 	if $"Background music".playing == false:
 		$"Background music".playing = true
 	if alive:
-		mPos = get_global_mouse_position()
-		difference = mPos - self.position
-		rotationZ = atan2(difference.y, difference.x)
-		self.rotate(rotationZ - self.rotation)
-		$"Main camera".rotation = -self.global_rotation
+		RotateToCursor()

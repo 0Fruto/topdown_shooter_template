@@ -183,6 +183,7 @@ position = Vector2( 0.0853584, -4.01916 )
 z_index = 22
 frames = SubResource( 6 )
 animation = "Idle"
+frame = 3
 playing = true
 centered = false
 offset = Vector2( -15.59, -11.488 )

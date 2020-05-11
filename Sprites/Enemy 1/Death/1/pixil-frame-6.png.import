@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pixil-frame-2.png-b6b0d66a045f7a380f5a415ac0f8957c.stex"
+path="res://.import/pixil-frame-6.png-0cb920a9c9d57ace1e5e62b5d17b1e18.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Enemy 1/Death/pixil-frame-2.png"
-dest_files=[ "res://.import/pixil-frame-2.png-b6b0d66a045f7a380f5a415ac0f8957c.stex" ]
+source_file="res://Sprites/Enemy 1/Death/1/pixil-frame-6.png"
+dest_files=[ "res://.import/pixil-frame-6.png-0cb920a9c9d57ace1e5e62b5d17b1e18.stex" ]
 
 [params]
 

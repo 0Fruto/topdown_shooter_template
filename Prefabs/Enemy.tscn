@@ -1,14 +1,14 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Sprites/Enemy 1/Idle/pixil-frame-0.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=2]
-[ext_resource path="res://Sprites/Enemy 1/Death/pixil-frame-6.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Enemy 1/Death/pixil-frame-1.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Enemy 1/Death/pixil-frame-0.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Enemy 1/Death/pixil-frame-3.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Enemy 1/Death/pixil-frame-4.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Enemy 1/Death/pixil-frame-2.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Enemy 1/Death/pixil-frame-5.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Enemy 1/Death/1/pixil-frame-6.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Enemy 1/Death/1/pixil-frame-1.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Enemy 1/Death/1/pixil-frame-0.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Enemy 1/Death/1/pixil-frame-3.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Enemy 1/Death/1/pixil-frame-4.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Enemy 1/Death/1/pixil-frame-2.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Enemy 1/Death/1/pixil-frame-5.png" type="Texture" id=9]
 [ext_resource path="res://Sounds/Putin/Вова - Голос Путина (www.hotplayer.ru).wav" type="AudioStream" id=10]
 [ext_resource path="res://Sounds/Putin/Голос - Путин 2000 год (www.hotplayer.ru).wav" type="AudioStream" id=11]
 [ext_resource path="res://Sounds/Putin/Что гуглят голосом - Путин (www.hotplayer.ru).wav" type="AudioStream" id=12]
@@ -19,6 +19,13 @@
 [ext_resource path="res://Scripts/EnemyShoot.gd" type="Script" id=17]
 [ext_resource path="res://Sprites/Player/Gun/pixil-frame-0.png" type="Texture" id=18]
 [ext_resource path="res://Sprites/Player/Gun/pixil-frame-1.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/Enemy 1/Death/2/pixil-frame-4.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/Enemy 1/Death/2/pixil-frame-2.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Enemy 1/Death/2/pixil-frame-1.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/Enemy 1/Death/2/pixil-frame-5.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/Enemy 1/Death/2/pixil-frame-3.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/Enemy 1/Death/2/pixil-frame-0 (1).png" type="Texture" id=25]
+[ext_resource path="res://Sprites/Enemy 1/Death/2/pixil-frame-6.png" type="Texture" id=26]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.51551, 2.70146 )
@@ -30,20 +37,25 @@ animations = [ {
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 3 ) ],
-"loop": false,
-"name": "Death",
-"speed": 2.0
-}, {
 "frames": [ ExtResource( 16 ), ExtResource( 15 ) ],
 "loop": false,
 "name": "Shooting",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 25 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 24 ), ExtResource( 20 ), ExtResource( 23 ), ExtResource( 26 ) ],
+"loop": false,
+"name": "Death2",
+"speed": 2.0
+}, {
 "frames": [ ExtResource( 15 ) ],
 "loop": true,
 "name": "Ready",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "Death1",
+"speed": 2.0
 } ]
 
 [sub_resource type="SpriteFrames" id=3]

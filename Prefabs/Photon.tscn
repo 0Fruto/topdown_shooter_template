@@ -8,7 +8,7 @@ extents = Vector2( 1.00727, 0.511095 )
 [node name="Photon" type="KinematicBody2D"]
 position = Vector2( 0, 0.0100179 )
 script = ExtResource( 2 )
-speed = 100
+speed = 1000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 7 )
