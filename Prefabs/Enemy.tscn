@@ -32,14 +32,14 @@ extents = Vector2( 7.51551, 2.70146 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 16 ), ExtResource( 15 ) ],
 "loop": false,
 "name": "Shooting",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 25 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 24 ), ExtResource( 20 ), ExtResource( 23 ), ExtResource( 26 ) ],
@@ -60,14 +60,14 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 18 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 19 ), ExtResource( 18 ) ],
 "loop": false,
 "name": "Shooting",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "Idle",
 "speed": 5.0
 } ]
 
@@ -76,6 +76,8 @@ script = ExtResource( 17 )
 
 [node name="Enemy" type="KinematicBody2D" parent="."]
 position = Vector2( -0.282471, 0.0244064 )
+collision_layer = 15
+collision_mask = 15
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]

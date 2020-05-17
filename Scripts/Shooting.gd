@@ -10,10 +10,9 @@ export var reloadingDuration = 100
 var reloadingCounter = reloadingDuration
 
 func IsEnemy(goal):
-	for i in $Enemyies.get_child_count():
-		if goal == get_node("Enemyies/Enemy" + str(i)):
+	for i in $Enemies.get_child_count():
+		if goal == get_node("Enemies/Enemy" + str(i)):
 			return true
-		
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -32,20 +31,22 @@ func Shooting():
 	$Player/Character/Gun.play("Shooting")
 	$Player/Character.play("Shooting")
 	$Cursor.play("Shooting")
-	$"Player/Player Shoot col".disabled = false
-	$"Player/Player Idle col".disabled = true
 	bullet = loadBullet.instance()
 	add_child(bullet)
 	cd = 0
 	bullets -= 1
+	if !$Player.hiding:
+		$"Player/Player Shoot col".disabled = false
+		$"Player/Player Idle col".disabled = true
 
 func Prepare():
 	$Player/Character/Gun.show()
 	$Player/Character.play("Prepare")
 	$Player/Character/Gun.play("Prepare")
 	$Cursor.play("Idle")
-	$"Player/Player Shoot col".disabled = false
-	$"Player/Player Idle col".disabled = true
+	if !$Player.hiding:
+		$"Player/Player Shoot col".disabled = false
+		$"Player/Player Idle col".disabled = true
 	if bullets < 1:
 		ReloadWeapon()
 
@@ -55,24 +56,22 @@ func RestartGame():
 	$Player/Character/Gun.show()
 	bullets = $Player.fullMagazine
 	$Player.magazineCount = 4
-	$Player.alive
-	
+	$Player.alive = true
+	$Player.health = 100
 
 func RemoveWeapon():
 	$Cursor.play("Idle")
 	$Player/Character/Gun.hide()
 	$Player/Character.play("Idle")
-	$"Player/Player Shoot col".disabled = true
-	$"Player/Player Idle col".disabled = false
+	if !$Player.hiding:
+		$"Player/Player Shoot col".disabled = true
+		$"Player/Player Idle col".disabled = false
 
 func _process(delta):
-	if Input.action_press("ui_cancel"):
-		RestartGame()
-	
 	if $Player.alive:
 		$"Player/Main camera/Bullets".text = (str(bullets) + "/" + str($Player.magazineCount))
 		cd += delta
-		if Input.is_action_pressed("ui_select") and not reloading:
+		if Input.is_action_pressed("shoot") and not reloading:
 			if cd >= cdGoal and bullets > 0:
 				Shooting()
 			else:

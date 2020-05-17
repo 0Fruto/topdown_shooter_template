@@ -51,6 +51,7 @@ func _physics_process(_delta):
 				$"Particle".emitting = true
 				$"Bullet texture".hide()
 				if body.collider.name != "Wall":
+					$"Particle".set_modulate(Color(1, 0.2, 0.2, 0.5))
 					if body.collider.health > 0:
 						body.collider.setHealth(damage)
 				destroy = true
