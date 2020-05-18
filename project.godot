@@ -17,9 +17,10 @@ _global_script_class_icons={
 
 config/name="furry octo waffle"
 run/main_scene="res://Scenes/Main.tscn"
-boot_splash/image="res://Sprites/Player/Gun/pixil-frame-1.png"
+boot_splash/image="res://Sprites/Startup.png"
+boot_splash/fullsize=false
 boot_splash/use_filter=false
-boot_splash/bg_color=Color( 1, 0.890196, 0.890196, 1 )
+boot_splash/bg_color=Color( 0.701961, 0.905882, 0.862745, 1 )
 config/icon="res://Sprites/Cursor/Idle/pixil-frame-2.png"
 config/macos_native_icon="res://Sprites/Cursor/Idle/pixil-frame-2.png"
 config/windows_native_icon="res://Sprites/Cursor/Idle/pixil-frame-2.png"
@@ -127,7 +128,12 @@ focus={
  ]
 }
 
+[logging]
+
+file_logging/enable_file_logging=true
+
 [rendering]
 
 quality/2d/use_pixel_snap=true
+environment/default_clear_color=Color( 0.270588, 0.662745, 0.67451, 1 )
 environment/default_environment="res://default_env.tres"

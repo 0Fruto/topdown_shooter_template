@@ -22,6 +22,7 @@ var rotateAround = false
 var rotationCounter = 0
 var rotationGoal = 0
 var rotationDirection = 1
+export var viewAngle = 50
 
 var loadBullet
 var bullet
@@ -65,7 +66,7 @@ func IsLookingOn(goal):
 	var Pos = goal.global_position
 	var difference = Pos - self.global_position
 	var rotationZ = atan2(difference.y, difference.x)
-	if rad2deg(self.global_rotation) > rad2deg(rotationZ) - 30 and rad2deg(self.global_rotation) < rad2deg(rotationZ) + 30:
+	if rad2deg(self.global_rotation) > rad2deg(rotationZ) - viewAngle and rad2deg(self.global_rotation) < rad2deg(rotationZ) + viewAngle:
 		
 		var photon = loadPhoton.instance()
 		add_child(photon)

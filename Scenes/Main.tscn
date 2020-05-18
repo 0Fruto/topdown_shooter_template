@@ -44,34 +44,29 @@ font_data = SubResource( 4 )
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ ExtResource( 16 ) ],
-"loop": true,
-"name": "Prepare",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 15 ) ],
 "loop": true,
 "name": "Shooting",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 16 ) ],
 "loop": true,
-"name": "Idle",
+"name": "Prepare",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 21 ), ExtResource( 22 ) ],
 "loop": false,
 "name": "Reloading",
 "speed": 1.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ ExtResource( 17 ) ],
-"loop": true,
-"name": "Prepare",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 18 ) ],
 "loop": true,
 "name": "Shooting",
@@ -79,12 +74,17 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 17 ) ],
 "loop": true,
-"name": "Idle",
+"name": "Prepare",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 23 ) ],
 "loop": true,
 "name": "Reloading",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "Idle",
 "speed": 5.0
 } ]
 
@@ -128,7 +128,6 @@ collision_layer = 13
 collision_mask = 13
 script = ExtResource( 6 )
 speed = 150
-health = 10000
 
 [node name="Background music" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource( 24 )
@@ -178,6 +177,7 @@ margin_right = -69.0287
 margin_bottom = -44.9473
 rect_scale = Vector2( 0.6, 0.6 )
 custom_fonts/font = SubResource( 5 )
+text = "test"
 __meta__ = {
 "_edit_use_anchors_": false
 }

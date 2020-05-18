@@ -36,6 +36,7 @@ func _physics_process(_delta):
 				body.collider.setHealth(damage)
 				destroy = true
 				$CollisionShape2D.disabled = true
+				$"Particle".set_modulate(Color(1, 0.2, 0.2, 0.5))
 			
 			if body.collider.name == "Wall":
 				$"Particle".emitting = true

@@ -6,7 +6,7 @@
 [ext_resource path="res://Sprites/WallParticles.png" type="Texture" id=4]
 [ext_resource path="res://Prefabs/Trail.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Gradient" id=7]
+[sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.592715 )
 colors = PoolColorArray( 1, 0, 0, 0, 1, 0, 0, 0.678431 )
 
@@ -40,11 +40,13 @@ scale = 24.99
 scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 1.00727, 0.511095 )
 
 [node name="EnemyBullet" type="KinematicBody2D"]
 position = Vector2( 0, 0.0100179 )
+collision_layer = 4
+collision_mask = 4
 script = ExtResource( 2 )
 speed = 20
 
@@ -52,7 +54,7 @@ speed = 20
 position = Vector2( -0.0200367, 0 )
 width = 1.0
 default_color = Color( 1, 1, 1, 1 )
-gradient = SubResource( 7 )
+gradient = SubResource( 1 )
 targetPath = NodePath("..")
 trailLength = 10
 
@@ -83,4 +85,4 @@ texture = ExtResource( 1 )
 offset = Vector2( -0.976542, -0.00240231 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 8 )
+shape = SubResource( 7 )
